@@ -7,13 +7,24 @@ docker run --name s3fs-samba \
 	--restart always -d --privileged \
 	-p 139:139 \
 	-p 445:445 \
-	-e AWSKEY="Your AWS Key" \
-	-e AWSSECRET="Your AWS Secret" \
-	-e SMBUSER="Username for smb access" \
-	-e SMBPASS="Password for smb access" \
-	-e BUCKET="Your S3 bucket names, space delimited" \
-	tphillips/s3fs-samba
+        -e AWSKEY_FILE=aws_key \
+        -e AWSSECRET_FILE=aws_secret \
+        -e SMBUSER_FILE=smb_user \
+        -e SMBPASS_FILE=smb_pass \
+        -e BUCKET="your_bucket_name" \
+        -e S3_HOST="your_s3_host" \
+	anyway/s3fs-samba
+ 
+ ## Environment Variables
+ 
+- `AWSKEY_FILE`: Docker Secret name containing the AWS Access Key (default: `aws_key`).
+- `AWSSECRET_FILE`: Docker Secret name containing the AWS Secret Access Key (default: `aws_secret`).
+- `SMBUSER_FILE`: Docker Secret name containing the Samba username (default: `smb_user`).
+- `SMBPASS_FILE`: Docker Secret name containing the Samba password (default: `smb_pass`).
+- `BUCKET`: Name(s) of the S3 bucket(s) to mount (can be multiple, separated by spaces).
+- `S3_HOST`: Hostname for S3-compatible storage.
 
+  
 Note that:
 
 * The s3fs mount is configure to use a local cache at /mnt/s3fs-***-tmp and according to https://github.com/s3fs-fuse/s3fs-fuse/wiki/FAQ this is unbounded!  This can be turned off in the fstab line in start.sh
