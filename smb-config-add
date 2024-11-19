@@ -23,7 +23,7 @@ use sendfile = yes
 oplocks = yes
 level2 oplocks = yes
 
-[storage]
+[_BUCKET_]
 path = /mnt/s3fs-_BUCKET_
 read only = no
 browsable = yes
