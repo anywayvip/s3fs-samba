@@ -5,12 +5,12 @@ SMBUSER_FILE=${SMBUSER_FILE:-smb_user}
 SMBPASS_FILE=${SMBPASS_FILE:-smb_pass}
 
 # 从 Docker Secrets 中读取 AWS 密钥
-AWSKEY=$(cat /run/secrets/$AWSKEY_FILE)
-AWSSECRET=$(cat /run/secrets/$AWSSECRET_FILE)
+AWSKEY=$(cat $AWSKEY_FILE)
+AWSSECRET=$(cat $AWSSECRET_FILE)
 
 # 从 Docker Secrets 中读取 Samba 用户和密码
-SMBUSER=$(cat /run/secrets/$SMBUSER_FILE)
-SMBPASS=$(cat /run/secrets/$SMBPASS_FILE)
+SMBUSER=$(cat $SMBUSER_FILE)
+SMBPASS=$(cat $SMBPASS_FILE)
 
 # 将 AWS 密钥写入文件
 echo "$AWSKEY:$AWSSECRET" >> /etc/passwd-s3fs
