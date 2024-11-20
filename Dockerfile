@@ -5,4 +5,5 @@ ADD smb-config-add /etc/samba/smb.conf.template
 EXPOSE 139
 EXPOSE 445
 ADD start.sh /start.sh
+RUN chmod +x /start.sh
 CMD /start.sh
