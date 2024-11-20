@@ -3,17 +3,19 @@ A docker container which mounts s3 buckets and shares them using samba
 
 To use:
 
-docker run --name s3fs-samba
---restart always -d --privileged
--p 139:139
--p 445:445
--e AWSKEY="Your AWS Key"
--e AWSSECRET="Your AWS Secret"
--e SMBUSER="Username for smb access"
--e SMBPASS="Password for smb access"
--e BUCKET="Your S3 bucket names, space delimited"
--e S3_HOST="Your S3 host"
-dockerzvip/s3fs-samba
+docker run --name s3fs-samba \
+  --restart always \
+  -d \
+  --privileged \
+  -p 139:139 \
+  -p 445:445 \
+  -e AWSKEY="Your AWS Key" \
+  -e AWSSECRET="Your AWS Secret" \
+  -e SMBUSER="Username for smb access" \
+  -e SMBPASS="Password for smb access" \
+  -e BUCKET="Your S3 bucket names, space delimited" \
+  -e S3_HOST="Your S3 host" \
+  dockerzvip/s3fs-samba
  
 Note that:
 
