@@ -1,0 +1,11 @@
+
+[_BUCKET_]
+path = /mnt/s3fs-_BUCKET_
+read only = no
+browsable = yes
+guest ok = no
+public = no
+writable = yes
+create mask = 777
+directory mask = 777
+valid users = 
