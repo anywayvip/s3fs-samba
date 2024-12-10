@@ -1,4 +1,3 @@
-
 [_BUCKET_]
 path = /mnt/s3fs-_BUCKET_
 read only = no
